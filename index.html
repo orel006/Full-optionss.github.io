@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Notion - Life Organizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <nav class="sidebar">
+            <h1>Mini Notion</h1>
+            <ul>
+                <li class="menu-item active" data-section="todo">To-Do List</li>
+                <li class="menu-item" data-section="journal">บันทึกประจำวัน</li>
+                <li class="menu-item" data-section="notes">Notes</li>
+                <li class="menu-item" data-section="ideas">Ideas</li>
+                <li class="menu-item" data-section="goals">Goals</li>
+            </ul>
+        </nav>
+        <main class="content">
+            <section id="section-todo" class="section active">
+                <h2>To-Do List</h2>
+                <form id="todo-form">
+                    <input type="text" id="todo-input" placeholder="เพิ่มสิ่งที่ต้องทำ..." required>
+                    <button type="submit">เพิ่ม</button>
+                </form>
+                <ul id="todo-list"></ul>
+            </section>
+            <section id="section-journal" class="section">
+                <h2>บันทึกประจำวัน (Journal)</h2>
+                <form id="journal-form">
+                    <input type="date" id="journal-date" required>
+                    <textarea id="journal-text" rows="2" placeholder="เขียนบันทึกวันนี้..."></textarea>
+                    <button type="submit">บันทึก</button>
+                </form>
+                <ul id="journal-list"></ul>
+            </section>
+            <section id="section-notes" class="section">
+                <h2>Notes</h2>
+                <form id="notes-form">
+                    <textarea id="notes-text" rows="2" placeholder="เพิ่มโน้ตใหม่..."></textarea>
+                    <button type="submit">เพิ่ม</button>
+                </form>
+                <ul id="notes-list"></ul>
+            </section>
+            <section id="section-ideas" class="section">
+                <h2>Ideas</h2>
+                <form id="ideas-form">
+                    <textarea id="ideas-text" rows="2" placeholder="เพิ่มไอเดียใหม่..."></textarea>
+                    <button type="submit">เพิ่ม</button>
+                </form>
+                <ul id="ideas-list"></ul>
+            </section>
+            <section id="section-goals" class="section">
+                <h2>Goals</h2>
+                <form id="goals-form">
+                    <textarea id="goals-text" rows="2" placeholder="เพิ่มเป้าหมายใหม่..."></textarea>
+                    <button type="submit">เพิ่ม</button>
+                </form>
+                <ul id="goals-list"></ul>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
