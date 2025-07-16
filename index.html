@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full options - รับรีโนเวท ต่อเติม ซ่อมแซม</title>
     <style>
-        /* --- Google Fonts (ตัวอย่าง) --- */
+        /* --- Google Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap');
 
-        /* --- CSS Variables (ปรับสีแบรนด์ของคุณที่นี่) --- */
+        /* --- CSS Variables --- */
         :root {
-            --primary-color: #004A7F;  /* สีน้ำเงินเข้ม น่าเชื่อถือ */
-            --secondary-color: #FDB813; /* สีเหลือง/ทอง สำหรับปุ่มเด่น */
+            --primary-color: #004A7F;  /* สีน้ำเงินเข้ม */
+            --secondary-color: #FDB813; /* สีเหลือง/ทอง */
             --dark-grey: #333333;
             --light-grey: #f4f4f4;
             --white-color: #ffffff;
@@ -64,19 +64,18 @@
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .logo {
-            display: flex;
-            align-items: center;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary-color);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            /* เพิ่มเติม: ทำให้โลโก้ไม่หดเมื่อจอแคบ */
-            flex-shrink: 0;
+            flex-shrink: 0; /* ป้องกันโลโก้หด */
         }
         .logo img {
-            max-height: 50px; 
+            max-height: 50px;
             margin-right: 15px;
         }
 
@@ -102,11 +101,27 @@
             color: var(--secondary-color);
         }
 
-        /* --- Hero Section (หน้าหลัก) --- */
+        /* --- Hamburger Menu Button --- */
+        .hamburger-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+        .hamburger-btn .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(rgba(0, 74, 127, 0.8), rgba(0, 74, 127, 0.8)), url('https://images.unsplash.com/photo-1581092449339-21951e73998f?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 74, 127, 0.8), rgba(0, 74, 127, 0.8)), url('http://googleusercontent.com/file_content/0') center/cover no-repeat;
             color: var(--white-color);
-            padding: 100px 0; /* ปรับลด Padding */
+            padding: 120px 0;
             text-align: center;
         }
 
@@ -123,7 +138,7 @@
         }
 
         .cta-buttons .btn {
-            margin: 0 10px;
+            margin: 10px;
         }
         
         /* --- Buttons --- */
@@ -152,28 +167,21 @@
             border: 2px solid var(--white-color);
         }
         
-        /* --- Why Us Section --- */
-        #why-us {
-            background-color: var(--light-grey);
-        }
-        .why-us-grid {
+        /* --- Other Sections --- */
+        .why-us-grid, .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            text-align: center;
         }
+
         .why-us-item {
             background: var(--white-color);
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
         }
-        .why-us-item h3 {
-            font-size: 1.4rem;
-            margin-top: 0;
-        }
-
-        /* --- Services Section --- */
+        
         .service-card {
             background: var(--light-grey);
             padding: 30px;
@@ -189,107 +197,42 @@
             padding-left: 20px;
         }
 
-        /* --- Portfolio Section --- */
-        .portfolio-grid {
-             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
         .project-card {
             background: var(--white-color);
             border: 1px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
         }
         .project-image-placeholder {
             height: 220px;
             background: #e0e0e0;
-            color: #999;
-            font-style: italic;
-            overflow: hidden; 
         }
-
         .project-image-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
-        .project-card:hover .project-image-placeholder img {
-            transform: scale(1.05); 
-        }
-        
         .project-info {
             padding: 20px;
-            flex-grow: 1; 
-        }
-        .project-info h4 {
-            margin-top: 0;
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-        .project-info strong {
-            color: var(--primary-color);
         }
 
-        /* --- About Us Section --- */
-        #about {
-            background-color: var(--light-grey);
-        }
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: center;
         }
-        .mission-vision h3 {
-            margin-bottom: 15px;
-        }
-        .mission-vision ul {
-            list-style: none;
-            padding: 0;
-        }
-        .mission-vision li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 25px;
-        }
-        .mission-vision li::before {
-            content: '✓';
-            color: var(--secondary-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
 
-        /* --- Contact Section --- */
         .contact-details {
             max-width: 550px;
             margin: 0 auto;
-            background: var(--white-color);
             padding: 30px 40px;
             border-radius: 8px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.08);
         }
-        .contact-details h3 {
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 25px;
-        }
         .contact-details p {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            word-break: break-all; /* เพิ่มเติม: ป้องกันข้อความยาวล้นจอ */
-        }
-        .contact-details a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        .contact-details a:hover {
-            text-decoration: underline;
+            word-break: break-all;
         }
 
         /* --- Footer --- */
@@ -299,93 +242,50 @@
             text-align: center;
             padding: 20px 0;
         }
-        
-        /* --- Hamburger Menu Button (CSS สำหรับปุ่ม) --- */
-        /* เพิ่มเติม: ซ่อนปุ่มแฮมเบอร์เกอร์ในจอใหญ่ */
-        .hamburger-btn {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 10px;
-        }
 
-        .hamburger-btn .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: var(--primary-color);
-            transition: all 0.3s ease-in-out;
-        }
-        /* ------------------------------------------- */
-
-        /* --- Responsive Styles (ปรับแก้สำหรับมือถือ) --- */
+        /* --- Responsive Styles for Mobile --- */
         @media (max-width: 768px) {
             .navbar {
-                /* ทำให้เมนูอยู่บรรทัดเดียวกันกับโลโก้ */
-                flex-wrap: wrap; 
+                flex-wrap: wrap;
             }
-            
-            /* เพิ่มเติม: แสดงปุ่มแฮมเบอร์เกอร์ */
+
             .hamburger-btn {
-                display: block;
-                order: 3; /* จัดลำดับให้ปุ่มอยู่ขวาสุด */
+                display: block; /* แสดงปุ่มแฮมเบอร์เกอร์ */
+                order: 3;
             }
 
             .nav-links {
-                /* จัดการเมนูให้ซ่อนและแสดงผลตามปุ่ม */
-                display: none; /* ซ่อนเมนูปกติ */
+                display: none; /* ซ่อนเมนูแนวนอน */
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
-                order: 4; /* จัดลำดับให้อยู่ล่างสุด */
+                order: 4;
                 background-color: var(--white-color);
                 padding: 20px 0;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             }
-
             .nav-links.active {
-                display: flex; /* แสดงเมนูเมื่อกดปุ่ม */
+                display: flex; /* แสดงเมนูเมื่อกด */
             }
-
             .nav-links li {
-                margin: 15px 0; /* เพิ่มระยะห่างระหว่างเมนู */
+                margin: 15px 0;
             }
             
             .hero {
-                padding: 60px 0; /* ลดระยะห่างบนล่าง */
+                padding: 80px 0;
             }
-
             .hero h1 {
-                font-size: 2.2rem; /* ลดขนาดตัวอักษรหัวข้อใหญ่ */
-            }
-            .hero p {
-                font-size: 1rem;
+                font-size: 2.2rem;
             }
 
             .cta-buttons {
                 display: flex;
-                flex-direction: column; /* จัดปุ่มเป็นแนวตั้ง */
+                flex-direction: column;
                 align-items: center;
             }
-            .cta-buttons .btn {
-                margin: 10px 0;
-                width: 80%;
-                max-width: 250px;
-            }
-
+            
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .contact-details {
-                padding: 20px;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
             }
         }
     </style>
@@ -396,7 +296,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#home" class="logo">
-                    <img src="https://i.imgur.com/your-logo.png" alt="Full options Logo">
+                    <img src="https://i.imgur.com/your-logo.png" alt="Logo">
                     <span>Full options</span>
                 </a>
                 
@@ -422,11 +322,9 @@
         <section id="home" class="hero">
             <div class="container">
                 <h1>เนรมิตพื้นที่ของคุณให้เหนือกว่า ด้วยบริการที่ใส่ใจทุกรายละเอียด</h1>
-                <p>
-                    ที่ Full options เราคือทีมผู้เชี่ยวชาญด้านการรีโนเวท ต่อเติม และซ่อมแซม ที่พร้อมเปลี่ยนทุกความต้องการของคุณให้กลายเป็นความจริง เราให้บริการครอบคลุมทั้งบ้าน คอนโด โรงแรม และร้านอาหารในพื้นที่กรุงเทพฯ ปริมณฑล และชลบุรี
-                </p>
+                <p>ที่ Full options เราคือทีมผู้เชี่ยวชาญด้านการรีโนเวท ต่อเติม และซ่อมแซม ที่พร้อมเปลี่ยนทุกความต้องการของคุณให้กลายเป็นความจริง</p>
                 <div class="cta-buttons">
-                    <a href="#services" class="btn btn-secondary">ดูบริการทั้งหมดของเรา</a>
+                    <a href="#services" class="btn btn-secondary">ดูบริการของเรา</a>
                     <a href="#contact" class="btn btn-primary">ประเมินราคาฟรี!</a>
                 </div>
             </div>
@@ -459,39 +357,23 @@
         <section id="services">
             <div class="container">
                 <h2>บริการของเรา</h2>
-                <p style="text-align: center; max-width: 800px; margin: -20px auto 40px auto;">
-                    ไม่ว่าคุณจะฝันถึงการปรับโฉมพื้นที่ใหม่, ขยายพื้นที่ใช้สอยให้มากขึ้น, หรือต้องการแก้ไขปัญหาจุกจิกกวนใจ Full options มีบริการที่ครอบคลุมทุกความต้องการของคุณอย่างครบวงจร
-                </p>
-
                 <div class="service-card">
                     <h3>1. งานรีโนเวท (Renovation)</h3>
-                    <p>บริการรีโนเวทของเราคือการพลิกโฉมพื้นที่เดิมให้กลับมาสวยงาม มีชีวิตชีวา และตอบโจทย์การใช้งานได้ดียิ่งขึ้น เราใส่ใจในทุกรายละเอียดตั้งแต่การออกแบบไปจนถึงการเลือกวัสดุ</p>
                     <ul>
                         <li><b>รีโนเวทบ้าน:</b> ปรับโฉมบ้านเก่า, รีโนเวทห้องน้ำ, ห้องครัว, ห้องนอน</li>
                         <li><b>รีโนเวทคอนโด:</b> ปรับฟังก์ชันพื้นที่จำกัด, ออกแบบ Built-in, เปลี่ยนสไตล์</li>
-                        <li><b>รีโนเวทโรงแรม:</b> ปรับปรุงล็อบบี้, ห้องพัก, พื้นที่ส่วนกลางให้ทันสมัย</li>
-                        <li><b>รีโนเวทร้านอาหาร/คาเฟ่:</b> ออกแบบร้านให้มีเอกลักษณ์ ดึงดูดลูกค้า</li>
                     </ul>
                 </div>
-
                 <div class="service-card">
                     <h3>2. งานต่อเติม (Extension)</h3>
-                    <p>สร้างพื้นที่ใช้สอยใหม่ให้เชื่อมต่อกับอาคารเดิมอย่างไร้รอยต่อ ทีมงานของเราเชี่ยวชาญด้านการออกแบบโครงสร้างที่แข็งแรงและงานสถาปัตยกรรมที่กลมกลืนกับดีไซน์เดิม</p>
                     <ul>
-                        <li>ต่อเติมครัวไทยหลังบ้าน</li>
-                        <li>ต่อเติมห้องทำงาน หรือ ห้องอเนกประสงค์</li>
-                        <li>ต่อเติมโรงจอดรถ</li>
+                        <li>ต่อเติมครัวไทยหลังบ้าน, ห้องทำงาน, ห้องอเนกประสงค์, โรงจอดรถ</li>
                     </ul>
                 </div>
-
                 <div class="service-card">
                     <h3>3. งานซ่อมแซม (Repair)</h3>
-                    <p>ทีมช่างผู้เชี่ยวชาญของเราพร้อมให้บริการซ่อมแซมทุกประเภท ตั้งแต่งานเล็กๆ ไปจนถึงงานใหญ่ เพื่อแก้ปัญหาให้คุณอย่างตรงจุดและรวดเร็ว</p>
                     <ul>
-                        <li>ซ่อมปัญหารหลังคารั่วซึม และ ดาดฟ้า</li>
-                        <li>แก้ไขผนังร้าว หรือทรุดตัว</li>
-                        <li>งานซ่อมระบบประปา-ไฟฟ้าเบื้องต้น</li>
-                        <li>งานทาสีใหม่ทั้งภายในและภายนอก</li>
+                        <li>ซ่อมปัญหารหลังคารั่วซึม, แก้ไขผนังร้าว, งานระบบประปา-ไฟฟ้า, งานทาสี</li>
                     </ul>
                 </div>
             </div>
@@ -503,31 +385,87 @@
                 <div class="portfolio-grid">
                     <div class="project-card">
                         <div class="project-image-placeholder">
-                            <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?fit=crop&w=800&q=80" alt="รีโนเวทคอนโดหรู">
+                             <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?fit=crop&w=800&q=80" alt="รีโนเวทคอนโดหรู">
                         </div>
                         <div class="project-info">
                             <h4>รีโนเวทคอนโดหรู ย่านอโศก</h4>
-                            <p><strong>ความต้องการ:</strong> ปรับปรุงคอนโดเก่าให้ดูทันสมัย โปร่งโล่ง เหมาะกับการปล่อยเช่า</p>
-                            <p><strong>บริการของเรา:</strong> รื้อผนังบางส่วน, ออกแบบ Built-in, เปลี่ยนพื้นและฝ้า, ติดตั้งระบบไฟใหม่</p>
                             <p><strong>ประเภท:</strong> รีโนเวท | <strong>สถานที่:</strong> กรุงเทพมหานคร</p>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-image-placeholder">
-                             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?fit=crop&w=800&q=80" alt="ต่อเติมครัวไทย">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?fit=crop&w=800&q=80" alt="ต่อเติมบ้านเดี่ยว">
                         </div>
                         <div class="project-info">
-                            <h4>ต่อเติมครัวไทย บ้านเดี่ยว ย่านบางนา</h4>
-                            <p><strong>ความต้องการ:</strong> เพิ่มพื้นที่ทำครัวไทยแยกเป็นสัดส่วน พร้อมระบายอากาศที่ดี</p>
-                             <p><strong>บริการของเรา:</strong> ลงเสาเข็ม, ก่อสร้างโครงสร้าง, ติดตั้งเคาน์เตอร์และระบบดูดควัน</p>
-                             <p><strong>ประเภท:</strong> ต่อเติม | <strong>สถานที่:</strong> กรุงเทพมหานคร</p>
+                            <h4>ต่อเติมครัวไทย บ้านเดี่ยว</h4>
+                            <p><strong>ประเภท:</strong> ต่อเติม | <strong>สถานที่:</strong> กรุงเทพมหานคร</p>
                         </div>
                     </div>
-                     <div class="project-card">
+                    <div class="project-card">
                         <div class="project-image-placeholder">
                             <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?fit=crop&w=800&q=80" alt="รีโนเวทร้านกาแฟ">
                         </div>
                         <div class="project-info">
-                            <h4>รีโนเวทร้านกาแฟ สไตล์ลอฟท์ จ.ชลบุรี</h4>
-                            <p><strong>ความต้องการ:</strong> เปลี่ยนอาคารพาณิชย์เก่าให้เป็นร้านกาแฟที่มีเอกลักษณ์ ดึงดูดลูกค้า</p>
-                             <p><strong>บริการของเรา:</strong>
+                            <h4>รีโนเวทร้านกาแฟ สไตล์ลอฟท์</h4>
+                            <p><strong>ประเภท:</strong> รีโนเวท | <strong>สถานที่:</strong> ชลบุรี</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>เกี่ยวกับเรา</h2>
+                <div class="about-content">
+                    <div>
+                        <h3>เรื่องราวของเรา</h3>
+                        <p><strong>Full options</strong> ก่อตั้งขึ้นจากความหลงใหลในงานออกแบบและก่อสร้าง เราเริ่มต้นจากทีมงานเล็กๆ ที่มีความฝันเดียวกัน คือการสร้างสรรค์พื้นที่ที่ไม่ได้มีแค่ความสวยงาม แต่ยังต้องตอบโจทย์การใช้งานและเปี่ยมไปด้วยคุณภาพ</p>
+                    </div>
+                    <div>
+                        <h3>วิสัยทัศน์และพันธกิจ</h3>
+                        <ul>
+                            <li>ส่งมอบงานคุณภาพที่ได้มาตรฐานและตรงต่อเวลาเสมอ</li>
+                            <li>ดำเนินงานด้วยความซื่อสัตย์ โปร่งใส ตรวจสอบได้ทุกขั้นตอน</li>
+                            <li>พัฒนาทักษะและองค์ความรู้ของทีมงานอย่างสม่ำเสมอ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" style="background-color: var(--light-grey);">
+            <div class="container">
+                 <h2>ติดต่อเรา</h2>
+                 <p style="text-align: center; max-width: 800px; margin: -20px auto 40px auto;">
+                    พร้อมเปลี่ยนไอเดียของคุณให้เป็นจริงแล้วหรือยัง? ทีมงานของเรายินดีให้คำปรึกษาฟรี!
+                </p>
+                 <div class="contact-details">
+                       <h3>ช่องทางการติดต่อ</h3>
+                       <p><strong>โทรด่วน:</strong> <a href="tel:0928141461">092 814 1461</a></p>
+                       <p><strong>คุยผ่านไลน์:</strong> <a href="https://line.me/R/ti/p/@799fsefq?oat_content=url&ts=07021953" target="_blank">@799fsefq</a></p>
+                       <p><strong>ส่งอีเมล:</strong> <a href="mailto:iffining@gmail.com">iffining@gmail.com</a></p>
+                       <p><strong>พื้นที่ให้บริการ:</strong> กรุงเทพมหานคร, ปริมณฑล, ชลบุรี</p>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Full options. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+    
+</body>
+</html>
