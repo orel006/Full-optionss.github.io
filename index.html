@@ -72,7 +72,7 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            flex-shrink: 0; /* ป้องกันโลโก้หด */
+            flex-shrink: 0; 
         }
         .logo img {
             max-height: 50px;
@@ -193,26 +193,40 @@
             padding-left: 15px;
         }
         .service-card ul {
-            list-style-type: '✓  ';
-            padding-left: 20px;
+            list-style: none;
+            padding-left: 0;
+        }
+        .service-card li {
+            padding-left: 5px;
+            margin-bottom: 5px;
         }
 
         .project-card {
             background: var(--white-color);
             border: 1px solid #ddd;
             border-radius: 8px;
-            overflow: hidden;
+            overflow: hidden; /* สำคัญมากสำหรับเอฟเฟคซูม */
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .project-image-placeholder {
             height: 220px;
             background: #e0e0e0;
+            overflow: hidden; /* เพิ่มอีกชั้นเพื่อความแน่นอน */
         }
+
+        /* === แก้ไข: เพิ่ม transition ให้รูปภาพ === */
         .project-image-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease; /* เพิ่มบรรทัดนี้ */
         }
+        
+        /* === เพิ่ม: เอฟเฟคตอนเอาเมาส์ชี้ === */
+        .project-card:hover .project-image-placeholder img {
+            transform: scale(1.05); /* ทำให้รูปขยาย 5% */
+        }
+        
         .project-info {
             padding: 20px;
         }
@@ -250,12 +264,12 @@
             }
 
             .hamburger-btn {
-                display: block; /* แสดงปุ่มแฮมเบอร์เกอร์ */
+                display: block;
                 order: 3;
             }
 
             .nav-links {
-                display: none; /* ซ่อนเมนูแนวนอน */
+                display: none;
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
@@ -265,7 +279,7 @@
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             }
             .nav-links.active {
-                display: flex; /* แสดงเมนูเมื่อกด */
+                display: flex;
             }
             .nav-links li {
                 margin: 15px 0;
@@ -296,7 +310,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#home" class="logo">
-                    <img src="Logo.jpg" alt="Logo">
+                    <img src="https://i.imgur.com/your-logo.png" alt="Logo">
                     <span>Full options</span>
                 </a>
                 
@@ -336,7 +350,7 @@
                 <div class="why-us-grid">
                     <div class="why-us-item">
                         <h3>ทีมงานมืออาชีพ</h3>
-                        <p>ทีมสถาปนิก วิศวกร และช่างฝีมือของเรา มีประสบการณ์ในวงการรวมกันกว่า 15 ปี การันตีผลงานคุณภาพทุกขั้นตอน</p>
+                        <p>ช่างฝีมือของเรา มีประสบการณ์ในวงการรวมกันกว่า 15 ปี การันตีผลงานคุณภาพทุกขั้นตอน</p>
                     </div>
                     <div class="why-us-item">
                         <h3>ประเมินราคาฟรี</h3>
@@ -348,7 +362,7 @@
                     </div>
                     <div class="why-us-item">
                         <h3>รับประกันผลงาน</h3>
-                        <p>อุ่นใจด้วยการรับประกันโครงสร้างและงานซ่อมแซมสูงสุด 1 ปี เพื่อความพึงพอใจสูงสุดของคุณ</p>
+                        <p>อุ่นใจด้วยการรับประกันงานซ่อมแซมสูงสุด 1 ปี  งานทำใหม่ 2 ปี เพื่อความพึงพอใจสูงสุดของคุณ</p>
                     </div>
                 </div>
             </div>
@@ -358,23 +372,34 @@
             <div class="container">
                 <h2>บริการของเรา</h2>
                 <div class="service-card">
-                    <h3>1. งานรีโนเวท (Renovation)</h3>
+                    <h3>1. งานรีโนเวทและตกแต่งภายใน</h3>
                     <ul>
-                        <li><b>รีโนเวทบ้าน:</b> ปรับโฉมบ้านเก่า, รีโนเวทห้องน้ำ, ห้องครัว, ห้องนอน</li>
-                        <li><b>รีโนเวทคอนโด:</b> ปรับฟังก์ชันพื้นที่จำกัด, ออกแบบ Built-in, เปลี่ยนสไตล์</li>
+                        <li>✨ รีโนเวทใหม่ (New Renovation)</li>
+                        <li>✨ ตกแต่งภายใน (Interior Decoration)</li>
+                        <li>✨ งานบิ้วอิน (Built-in Furniture)</li>
+                        <li>✨ รีโนเวทบ้าน คอนโด ห้องน้ำ ห้องครัว</li>
                     </ul>
                 </div>
                 <div class="service-card">
-                    <h3>2. งานต่อเติม (Extension)</h3>
+                    <h3>2. งานต่อเติม</h3>
                     <ul>
-                        <li>ต่อเติมครัวไทยหลังบ้าน, ห้องทำงาน, ห้องอเนกประสงค์, โรงจอดรถ</li>
+                        <li>✨ ต่อเติมครัวไทยหลังบ้าน</li>
+                        <li>✨ ต่อเติมห้องทำงาน ห้องอเนกประสงค์</li>
+                        <li>✨ ต่อเติมโรงจอดรถ</li>
                     </ul>
                 </div>
                 <div class="service-card">
-                    <h3>3. งานซ่อมแซม (Repair)</h3>
+                    <h3>3. งานซ่อมแซมและติดตั้งระบบ</h3>
                     <ul>
-                        <li>ซ่อมปัญหารหลังคารั่วซึม, แก้ไขผนังร้าว, งานระบบประปา-ไฟฟ้า, งานทาสี</li>
+                        <li>✨ ติดตั้งระบบน้ำ/ไฟ (Water/Electrical System Installation)</li>
+                        <li>✨ ซ่อมแซมหลังคารั่วซึมและดาดฟ้า</li>
+                        <li>✨ แก้ไขผนังร้าวและการทรุดตัว</li>
+                        <li>✨ งานทาสีใหม่ทั้งภายในและภายนอก</li>
                     </ul>
+                </div>
+                <div class="service-card">
+                    <h3>✨ ครบวงจรแบบ Full Options</h3>
+                    <p>เราพร้อมดูแลโครงการของคุณตั้งแต่ต้นจนจบ ตั้งแต่การให้คำปรึกษา ออกแบบ ไปจนถึงการก่อสร้างและส่งมอบงาน เพื่อให้คุณได้ผลลัพธ์ที่ดีที่สุดในที่เดียว</p>
                 </div>
             </div>
         </section>
@@ -385,7 +410,7 @@
                 <div class="portfolio-grid">
                     <div class="project-card">
                         <div class="project-image-placeholder">
-                             <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?fit=crop&w=800&q=80" alt="รีโนเวทคอนโดหรู">
+                             <img src="1phot.png" alt="รีโนเวทคอนโดหรู">
                         </div>
                         <div class="project-info">
                             <h4>รีโนเวทคอนโดหรู ย่านอโศก</h4>
@@ -394,7 +419,7 @@
                     </div>
                     <div class="project-card">
                         <div class="project-image-placeholder">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?fit=crop&w=800&q=80" alt="ต่อเติมบ้านเดี่ยว">
+                            <img src="2phot.png" alt="ต่อเติมบ้านเดี่ยว">
                         </div>
                         <div class="project-info">
                             <h4>ต่อเติมครัวไทย บ้านเดี่ยว</h4>
@@ -403,7 +428,7 @@
                     </div>
                     <div class="project-card">
                         <div class="project-image-placeholder">
-                            <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?fit=crop&w=800&q=80" alt="รีโนเวทร้านกาแฟ">
+                            <img src="3phot.png" alt="รีโนเวทร้านกาแฟ">
                         </div>
                         <div class="project-info">
                             <h4>รีโนเวทร้านกาแฟ สไตล์ลอฟท์</h4>
@@ -431,8 +456,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         
         <section id="contact" style="background-color: var(--light-grey);">
             <div class="container">
