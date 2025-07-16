@@ -3,65 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Notion - Life Organizer</title>
-    <link rel="stylesheet" href="style.css">
+    <title> [ชื่อบริษัท/แบรนด์ของคุณ] - รับรีโนเวท ต่อเติม ซ่อมแซม</title>
+    <style>
+        /* --- Google Fonts (ตัวอย่าง) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap');
+
+        /* --- CSS Variables (ปรับสีแบรนด์ของคุณที่นี่) --- */
+        :root {
+            --primary-color: #004A7F;  /* สีน้ำเงินเข้ม น่าเชื่อถือ */
+            --secondary-color: #FDB813; /* สีเหลือง/ทอง สำหรับปุ่มเด่น */
+            --dark-grey: #333333;
+            --light-grey: #f4f4f4;
+            --white-color: #ffffff;
+            --text-color: #4a4a4a;
+        }
+
+        /* --- General Styles --- */
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--white-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background: var(--white-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ----- พื้นที่สำหรับใส่ Logo ของคุณ ----- */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            /* *** คำแนะนำ: แทนที่ข้อความนี้ด้วยแท็ก <img> *** */
+            /* เช่น <img src="your-logo.png" alt="Logo" style="max-height: 50px;"> */
+            border: 2px dashed var(--secondary-color);
+            padding: 10px 20px;
+        }
+        .logo-placeholder-text {
+            color: var(--primary-color);
+        }
+        /* ------------------------------------- */
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- Hero Section (หน้าหลัก) --- */
+        .hero {
+            background: linear-gradient(rgba(0, 74, 127, 0.8), rgba(0, 74, 127, 0.8)), url('https://images.unsplash.com/photo-1581092449339-21951e73998f?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            color: var(--white-color);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: var(--white-color);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .cta-buttons .btn {
+            margin: 0 10px;
+        }
+        
+        /* --- Buttons --- */
+        .btn {
+            text-decoration: none;
+            color: var(--white-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--white-color);
+        }
+        
+        /* --- Why Us Section --- */
+        #why-us {
+            background-color: var(--light-grey);
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .why-us-item {
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .why-us-item h3 {
+            font-size: 1.4rem;
+            margin-top: 0;
+        }
+
+        /* --- Services Section --- */
+        .service-card {
+            background: var(--light-grey);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .service-card h3 {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 15px;
+        }
+        .service-card ul {
+            list-style-type: '✓  ';
+            padding-left: 20px;
+        }
+
+        /* --- Portfolio Section --- */
+        .portfolio-grid {
+             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: var(--white-color);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .project-image-placeholder {
+            height: 200px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-style: italic;
+        }
+        .project-info {
+            padding: 20px;
+        }
+        .project-info h4 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .project-info strong {
+            color: var(--primary-color);
+        }
+
+        /* --- About Us Section --- */
+        #about {
+            background-color: var(--light-grey);
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .mission-vision h3 {
+            margin-bottom: 15px;
+        }
+        .mission-vision ul {
+            list-style: none;
+            padding: 0;
+        }
+        .mission-vision li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        .mission-vision li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- Contact Section (Updated) --- */
+        .contact-details {
+            max-width: 550px;
+            margin: 0 auto;
+            background: var(--white-color);
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+        .contact-details h3 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+        .contact-details p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark-grey);
+            color: var(--white-color);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-links {
+                margin-top: 15px;
+            }
+            .nav-links li {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="main-wrapper">
-        <nav class="sidebar">
-            <h1>Mini Notion</h1>
-            <ul>
-                <li class="menu-item active" data-section="todo">To-Do List</li>
-                <li class="menu-item" data-section="journal">บันทึกประจำวัน</li>
-                <li class="menu-item" data-section="notes">Notes</li>
-                <li class="menu-item" data-section="ideas">Ideas</li>
-                <li class="menu-item" data-section="goals">Goals</li>
-            </ul>
-        </nav>
-        <main class="content">
-            <section id="section-todo" class="section active">
-                <h2>To-Do List</h2>
-                <form id="todo-form">
-                    <input type="text" id="todo-input" placeholder="เพิ่มสิ่งที่ต้องทำ..." required>
-                    <button type="submit">เพิ่ม</button>
-                </form>
-                <ul id="todo-list"></ul>
-            </section>
-            <section id="section-journal" class="section">
-                <h2>บันทึกประจำวัน (Journal)</h2>
-                <form id="journal-form">
-                    <input type="date" id="journal-date" required>
-                    <textarea id="journal-text" rows="2" placeholder="เขียนบันทึกวันนี้..."></textarea>
-                    <button type="submit">บันทึก</button>
-                </form>
-                <ul id="journal-list"></ul>
-            </section>
-            <section id="section-notes" class="section">
-                <h2>Notes</h2>
-                <form id="notes-form">
-                    <textarea id="notes-text" rows="2" placeholder="เพิ่มโน้ตใหม่..."></textarea>
-                    <button type="submit">เพิ่ม</button>
-                </form>
-                <ul id="notes-list"></ul>
-            </section>
-            <section id="section-ideas" class="section">
-                <h2>Ideas</h2>
-                <form id="ideas-form">
-                    <textarea id="ideas-text" rows="2" placeholder="เพิ่มไอเดียใหม่..."></textarea>
-                    <button type="submit">เพิ่ม</button>
-                </form>
-                <ul id="ideas-list"></ul>
-            </section>
-            <section id="section-goals" class="section">
-                <h2>Goals</h2>
-                <form id="goals-form">
-                    <textarea id="goals-text" rows="2" placeholder="เพิ่มเป้าหมายใหม่..."></textarea>
-                    <button type="submit">เพิ่ม</button>
-                </form>
-                <ul id="goals-list"></ul>
-            </section>
-        </main>
-    </div>
-    <script src="script.js"></script>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="Logo.jpg"><img src="Logo.jpg" alt="Logo" width="75" height="75" style="vertical-align: middle; margin-right: 10px;"> Full options </span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">หน้าหลัก</a></li>
+                    <li><a href="#services">บริการ</a></li>
+                    <li><a href="#portfolio">ผลงาน</a></li>
+                    <li><a href="#about">เกี่ยวกับเรา</a></li>
+                    <li><a href="#contact">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>เนรมิตพื้นที่ของคุณให้เหนือกว่า ด้วยบริการที่ใส่ใจทุกรายละเอียด</h1>
+                <p>
+                    ที่  Full options เราคือทีมผู้เชี่ยวชาญด้านการรีโนเวท ต่อเติม และซ่อมแซม ที่พร้อมเปลี่ยนทุกความต้องการของคุณให้กลายเป็นความจริง เราให้บริการครอบคลุมทั้งบ้าน คอนโด โรงแรม และร้านอาหารในพื้นที่กรุงเทพฯ ปริมณฑล และชลบุรี
+                </p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn btn-secondary">ดูบริการทั้งหมดของเรา</a>
+                    <a href="#contact" class="btn btn-primary">ประเมินราคาฟรี!</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us">
+            <div class="container">
+                <h2>ทำไมต้องเลือกเรา?</h2>
+                <div class="why-us-grid">
+                    <div class="why-us-item">
+                        <h3>ทีมงานมืออาชีพ</h3>
+                        <p>ทีมสถาปนิก วิศวกร และช่างฝีมือของเรา มีประสบการณ์ในวงการรวมกันกว่า [จำนวนปี] ปี การันตีผลงานคุณภาพทุกขั้นตอน</p>
+                    </div>
+                    <div class="why-us-item">
+                        <h3>ประเมินราคาฟรี</h3>
+                        <p>เรายินดีให้คำปรึกษาและเข้าประเมินหน้างานจริง พร้อมเสนอราคาอย่างโปร่งใส โดยไม่มีค่าใช้จ่ายใดๆ</p>
+                    </div>
+                    <div class="why-us-item">
+                        <h3>วัสดุคุณภาพ</h3>
+                        <p>เราคัดสรรเฉพาะวัสดุที่ได้มาตรฐาน มอก. มีความแข็งแรง ทนทาน เพื่อให้พื้นที่ของคุณสวยงามและคงทนยาวนาน</p>
+                    </div>
+                    <div class="why-us-item">
+                        <h3>รับประกันผลงาน</h3>
+                        <p>อุ่นใจด้วยการรับประกันโครงสร้างและงานซ่อมแซมสูงสุด [ระยะเวลาประกัน เช่น 1 ปี] เพื่อความพึงพอใจสูงสุดของคุณ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>บริการของเรา</h2>
+                <p style="text-align: center; max-width: 800px; margin: -20px auto 40px auto;">
+                    ไม่ว่าคุณจะฝันถึงการปรับโฉมพื้นที่ใหม่, ขยายพื้นที่ใช้สอยให้มากขึ้น, หรือต้องการแก้ไขปัญหาจุกจิกกวนใจ [ชื่อบริษัท/แบรนด์ของคุณ] มีบริการที่ครอบคลุมทุกความต้องการของคุณอย่างครบวงจร
+                </p>
+
+                <div class="service-card">
+                    <h3>1. งานรีโนเวท (Renovation)</h3>
+                    <p>บริการรีโนเวทของเราคือการพลิกโฉมพื้นที่เดิมให้กลับมาสวยงาม มีชีวิตชีวา และตอบโจทย์การใช้งานได้ดียิ่งขึ้น เราใส่ใจในทุกรายละเอียดตั้งแต่การออกแบบไปจนถึงการเลือกวัสดุ</p>
+                    <ul>
+                        <li><b>รีโนเวทบ้าน:</b> ปรับโฉมบ้านเก่า, รีโนเวทห้องน้ำ, ห้องครัว, ห้องนอน</li>
+                        <li><b>รีโนเวทคอนโด:</b> ปรับฟังก์ชันพื้นที่จำกัด, ออกแบบ Built-in, เปลี่ยนสไตล์</li>
+                        <li><b>รีโนเวทโรงแรม:</b> ปรับปรุงล็อบบี้, ห้องพัก, พื้นที่ส่วนกลางให้ทันสมัย</li>
+                        <li><b>รีโนเวทร้านอาหาร/คาเฟ่:</b> ออกแบบร้านให้มีเอกลักษณ์ ดึงดูดลูกค้า</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>2. งานต่อเติม (Extension)</h3>
+                    <p>สร้างพื้นที่ใช้สอยใหม่ให้เชื่อมต่อกับอาคารเดิมอย่างไร้รอยต่อ ทีมงานของเราเชี่ยวชาญด้านการออกแบบโครงสร้างที่แข็งแรงและงานสถาปัตยกรรมที่กลมกลืนกับดีไซน์เดิม</p>
+                    <ul>
+                        <li>ต่อเติมครัวไทยหลังบ้าน</li>
+                        <li>ต่อเติมห้องทำงาน หรือ ห้องอเนกประสงค์</li>
+                        <li>ต่อเติมโรงจอดรถ</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>3. งานซ่อมแซม (Repair)</h3>
+                    <p>ทีมช่างผู้เชี่ยวชาญของเราพร้อมให้บริการซ่อมแซมทุกประเภท ตั้งแต่งานเล็กๆ ไปจนถึงงานใหญ่ เพื่อแก้ปัญหาให้คุณอย่างตรงจุดและรวดเร็ว</p>
+                    <ul>
+                        <li>ซ่อมปัญหารหลังคารั่วซึม และ ดาดฟ้า</li>
+                        <li>แก้ไขผนังร้าว หรือทรุดตัว</li>
+                        <li>งานซ่อมระบบประปา-ไฟฟ้าเบื้องต้น</li>
+                        <li>งานทาสีใหม่ทั้งภายในและภายนอก</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" style="background-color: var(--light-grey);">
+            <div class="container">
+                <h2>ผลงานของเรา</h2>
+                <div class="portfolio-grid">
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+  <img src="88.jpg" alt="ผลงานของเรา" style="max-width: 110%; height: 40;">
+</div>
+
+                        </div>
+                        <div class="project-info">
+                            <h4>รีโนเวทคอนโดหรู ย่านอโศก</h4>
+                            <p><strong>ความต้องการของลูกค้า:</strong> ลูกค้าต้องการปรับปรุงคอนโดเก่าให้ดูทันสมัย โปร่งโล่ง เหมาะกับการปล่อยเช่า</p>
+                            <p><strong>บริการของเรา:</strong> รื้อผนังบางส่วน, ออกแบบ Built-in, เปลี่ยนพื้นและฝ้า, ติดตั้งระบบไฟใหม่</p>
+                            <p><strong>ผลลัพธ์:</strong> พื้นที่ดูกว้างขวางและหรูหราขึ้น ลูกค้าปล่อยเช่าได้ในราคาที่สูงขึ้น</p>
+                            <p><strong>ประเภท:</strong> รีโนเวท | <strong>สถานที่:</strong> กรุงเทพมหานคร</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                           (พื้นที่สำหรับรูปภาพผลงาน)
+                        </div>
+                        <div class="project-info">
+                            <h4>ต่อเติมครัวไทย บ้านเดี่ยว ย่านบางนา</h4>
+                             <p><strong>ความต้องการของลูกค้า:</strong> [อธิบายสั้นๆ ว่าลูกค้าต้องการอะไร]</p>
+                            <p><strong>บริการของเรา:</strong> [อธิบายว่า [ชื่อบริษัท] เข้าไปทำอะไรบ้าง]</p>
+                            <p><strong>ผลลัพธ์:</strong> [อธิบายผลที่ได้หลังทำงานเสร็จ]</p>
+                            <p><strong>ประเภท:</strong> ต่อเติม | <strong>สถานที่:</strong> กรุงเทพมหานคร</p>
+                        </div>
+                    </div>
+                     <div class="project-card">
+                        <div class="project-image-placeholder">
+    <img src="88.jpg" alt="ผลงานของเรา"> style="max-width: 110%; height: 40;">
+</div>
+                        <div class="project-info">
+                            <h4>รีโนเวทร้านกาแฟ สไตล์ลอฟท์ จ.ชลบุรี</h4>
+                             <p><strong>ความต้องการของลูกค้า:</strong> [อธิบายสั้นๆ ว่าลูกค้าต้องการอะไร]</p>
+                            <p><strong>บริการของเรา:</strong> [อธิบายว่า [ชื่อบริษัท] เข้าไปทำอะไรบ้าง]</p>
+                            <p><strong>ผลลัพธ์:</strong> [อธิบายผลที่ได้หลังทำงานเสร็จ]</p>
+                            <p><strong>ประเภท:</strong> รีโนเวท | <strong>สถานที่:</strong> ชลบุรี</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>เกี่ยวกับเรา</h2>
+                <div class="about-content">
+                    <div class="our-story">
+                        <h3>เรื่องราวของเรา</h3>
+                        <p><strong>[ชื่อบริษัท/แบรนด์ของคุณ]</strong> ก่อตั้งขึ้นจากความหลงใหลในงานออกแบบและก่อสร้าง เราเริ่มต้นจากทีมงานเล็กๆ ที่มีความฝันเดียวกัน คือการสร้างสรรค์พื้นที่ที่ไม่ได้มีแค่ความสวยงาม แต่ยังต้องตอบโจทย์การใช้งานและเปี่ยมไปด้วยคุณภาพ</p>
+                        <p>ตลอดระยะเวลาที่ผ่านมา เราได้สั่งสมประสบการณ์และความไว้วางใจจากลูกค้ามากมาย ทุกโครงการคือความภาคภูมิใจ และคือบทพิสูจน์ถึงความมุ่งมั่นของเราที่จะทำงานด้วยความซื่อสัตย์ โปร่งใส และส่งมอบผลงานที่ดีที่สุด</p>
+                    </div>
+                    <div class="mission-vision">
+                        <h3>วิสัยทัศน์และพันธกิจ</h3>
+                        <p><strong>วิสัยทัศน์:</strong> เป็นบริษัทรับเหมาชั้นนำในพื้นที่ กทม. และชลบุรี ที่ลูกค้าไว้วางใจและนึกถึงเป็นอันดับแรก</p>
+                        <strong>พันธกิจ:</strong>
+                        <ul>
+                           <li>ส่งมอบงานคุณภาพที่ได้มาตรฐานและตรงต่อเวลาเสมอ</li>
+                           <li>ดำเนินงานด้วยความซื่อสัตย์ โปร่งใส ตรวจสอบได้ทุกขั้นตอน</li>
+                           <li>พัฒนาทักษะและองค์ความรู้ของทีมงานอย่างสม่ำเสมอ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" style="background-color: var(--light-grey);">
+            <div class="container">
+                 <h2>ติดต่อเรา</h2>
+                 <p style="text-align: center; max-width: 800px; margin: -20px auto 40px auto;">
+                    พร้อมเปลี่ยนไอเดียของคุณให้เป็นจริงแล้วหรือยัง? ทีมงานของเรายินดีให้คำปรึกษาฟรี! เราพร้อมให้บริการในพื้นที่กรุงเทพมหานคร ปริมณฑล และชลบุรี
+                </p>
+                 <div class="contact-details">
+                     <h3>ช่องทางการติดต่อ</h3>
+                     <p><strong>โทรด่วน:</strong> <a href="tel:0928141461">092 814 1461</a></p>
+                     <p><strong>คุยผ่านไลน์:</strong> 
+  <a href="https://line.me/R/ti/p/@799fsefq?oat_content=url&ts=07021953" target="_blank">
+    @799fsefq
+  </a>
+</p>
+                     <p><strong>ส่งอีเมล:</strong> <a href="mailto:iffining@gmail.com">iffining@gmail.com</a></p>
+                     <p><strong>พื้นที่ให้บริการ:</strong> กรุงเทพมหานคร, ปริมณฑล, ชลบุรี</p>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 [ชื่อบริษัท/แบรนด์ของคุณ]. All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
-</html> 
+</html>
